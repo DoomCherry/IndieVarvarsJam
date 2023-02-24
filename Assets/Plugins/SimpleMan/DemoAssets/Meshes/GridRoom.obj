@@ -1,0 +1,45 @@
+# ProBuilder 5.0.6
+# https://unity3d.com/unity/features/worldbuilding/probuilder
+# 2/1/2023 8:48:34 PM
+
+mtllib ./GridRoom.mtl
+o GridRoom
+
+g GridRoom
+v 22.5 9.989738E-05 -22.5
+v 22.5 9.989738E-05 22
+v -22.5 9.989738E-05 -22.5
+v -22.5 9.989738E-05 22
+v 22.5 5 22
+v -22.5 5 22
+v 22.5 5 -22.5
+v -22.5 5 -22.5
+
+vt -22.5 -22.5
+vt -22.5 22
+vt 22.5 -22.5
+vt 22.5 22
+vt -22.5 9.989738E-05
+vt 22.5 9.989738E-05
+vt -22.5 5
+vt 22.5 5
+vt 22 9.989738E-05
+vt 22 5
+vt -22 9.989738E-05
+vt -22 5
+
+vn 0 1 0
+vn 0 0 -1
+vn -1 0 0
+vn 0 0 1
+vn 1 0 0
+
+usemtl T_GridGrayLight
+f 3/3/1 4/4/1 2/2/1 1/1/1
+
+usemtl T_GridGrayDark
+f 6/8/2 5/7/2 2/5/2 4/6/2
+f 5/10/3 7/7/3 1/5/3 2/9/3
+f 7/8/4 8/7/4 3/5/4 1/6/4
+f 8/8/5 6/12/5 4/11/5 3/6/5
+

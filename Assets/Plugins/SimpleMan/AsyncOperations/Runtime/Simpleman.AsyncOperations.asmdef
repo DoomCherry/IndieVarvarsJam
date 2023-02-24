@@ -1,0 +1,16 @@
+{
+    "name": "Simpleman.AsyncOperations",
+    "rootNamespace": "",
+    "references": [
+        "GUID:3cd57a010316e6244b4788db045e27ef"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
