@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
         Vector3 target = mousePos - transform.position;
         target.y = 0;
 
-        transform.forward = target.normalized;
+        //transform.forward = target.normalized;
 
 
 
