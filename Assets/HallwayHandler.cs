@@ -1,6 +1,8 @@
 using NaughtyAttributes;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public enum HallwayType
@@ -9,113 +11,60 @@ public enum HallwayType
     vertical
 }
 
-[RequireComponent(typeof(TilesManager))]
+[Serializable]
+public struct HallwayInfo
+{
+    public TileType _hallType;
+    public GameObject hallVariation;
+    public float chanceToDrop;
+}
+
 public class HallwayHandler : MonoBehaviour
 {
-    [SerializeField] private GameObject[] _horizontalWallTiles;
-    [SerializeField] private GameObject[] _verticalWallTiles;
-    [SerializeField] private GameObject[] _wayTiles;
-    [SerializeField] private TileType _defaultTileType;
-
-    private HallwayType _hallwayType;
-    private TilesManager _tilesManager;
+    [SerializeField] private HallwayInfo[] _horizontalHall;
+    [SerializeField] private HallwayInfo[] _verticalHall;
 
 
 
+   
 
-    public HallwayType HallwayType
+    public GameObject GetRandomVerticalHall()
     {
-        get
-        {
-            return _hallwayType;
-        }
-
-        set
-        {
-            _hallwayType = value;
-
-            if (_hallwayType == HallwayType.horizontal)
-                OffVerticalWalls();
-            else
-                OffHorizontalWalls();
-        }
-    }
-    public TilesManager TilesManager
-    {
-        get => _tilesManager = _tilesManager ??= GetComponent<TilesManager>();
+        return GetRandomHall(_verticalHall);
     }
 
-
-
-    [Button]
-    public void OnVerticalWalls()
+    public GameObject GetRandomHorizontalHall()
     {
-        for (int i = 0; i < _verticalWallTiles.Length; i++)
-        {
-            _verticalWallTiles[i].SetActive(true);
-        }
+        return GetRandomHall(_horizontalHall);
     }
 
-    [Button]
-    public void OnHorizontalWalls()
+    private GameObject GetRandomHall(HallwayInfo[] collection)
     {
-        for (int i = 0; i < _horizontalWallTiles.Length; i++)
+        float maxChance = GetMaxChance(collection);
+        float randomValue = UnityEngine.Random.Range(0, maxChance);
+        float currentDownChance = 0;
+
+        if (collection == null || collection.Length == 0)
+            throw new ArgumentNullException($"{this}, {nameof(HallwayInfo)} collection is not contain items, or equal null.");
+
+        for (int i = 0; i < collection.Length; i++)
         {
-            _horizontalWallTiles[i].SetActive(true);
+            if (randomValue >= currentDownChance && randomValue < collection[i].chanceToDrop)
+                return collection[i].hallVariation;
         }
+
+        return collection.Last().hallVariation;
     }
 
-    [Button]
-    public void OffVerticalWalls()
+    private float GetMaxChance(HallwayInfo[] collection)
     {
-        for (int i = 0; i < _verticalWallTiles.Length; i++)
+        float count = 0;
+
+        for (int i = 0; i < collection.Length; i++)
         {
-            _verticalWallTiles[i].SetActive(false);
+            count += collection[i].chanceToDrop;
         }
-    }
 
-    [Button]
-    public void OffHorizontalWalls()
-    {
-        for (int i = 0; i < _horizontalWallTiles.Length; i++)
-        {
-            _horizontalWallTiles[i].SetActive(false);
-        }
-    }
-
-    [Button]
-    public void SetWallToDefaule()
-    {
-        SetWayTo(_defaultTileType);
-    }
-
-    public void SetWayTo(TileType tileType)
-    {
-        ClearAllWayTypes();
-
-        for (int i = 0; i < _wayTiles.Length; i++)
-        {
-            Instantiate(TilesManager.TileCollections[tileType].GetRandomWayView(), _wayTiles[i].transform);
-        }
-    }
-
-    [Button]
-    public void ClearAllWayTypes()
-    {
-        for (int i = 0; i < _wayTiles.Length; i++)
-        {
-            RemoveAllChildren(_wayTiles[i].transform);
-        }
-    }
-
-    private void RemoveAllChildren(Transform transform)
-    {
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            if (Application.isPlaying)
-                Destroy(transform.GetChild(i).gameObject);
-            else
-                DestroyImmediate(transform.GetChild(i).gameObject);
-        }
+        return count;
     }
 }

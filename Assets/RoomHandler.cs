@@ -3,68 +3,116 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum RoomType
+{
+    Full,
+    LeftOff,
+    RightOff,
+    UpOff,
+    DownOff
+}
+
+[RequireComponent(typeof(HallwayHandler))]
 public class RoomHandler : MonoBehaviour
 {
-    [SerializeField] private GameObject[] _wayTiles;
-    [SerializeField] private GameObject[] _horizontalWallTiles;
-    [SerializeField] private GameObject[] _verticalWallTiles;
-    [SerializeField] private GameObject[] _leftDownCorners;
-    [SerializeField] private GameObject[] _rightDownCorners;
-    [SerializeField] private GameObject[] _leftUpCorners;
-    [SerializeField] private GameObject[] _rightUpCorners;
+    [Required]
+    [SerializeField] private Transform _leftHallParent;
 
-    [SerializeField] private TileType _defaultTileType;
-    private TilesManager _tilesManager;
+    [Required]
+    [SerializeField] private Transform _rightHallParent;
+
+    [Required]
+    [SerializeField] private Transform _upHallParent;
+
+    [Required]
+    [SerializeField] private Transform _downHallParent;
+
+    [SerializeField] private RoomType _roomType;
+
+    private HallwayHandler _hallwayHandler;
 
 
 
 
-    public TilesManager TilesManager
+    private HallwayHandler HallwayHandler
     {
-        get => _tilesManager = _tilesManager ??= GetComponent<TilesManager>();
+        get => _hallwayHandler = _hallwayHandler ??= GetComponent<HallwayHandler>();
+    }
+
+    public RoomType RoomType
+    {
+        get => _roomType;
+        set => _roomType = value;
     }
 
 
 
 
     [Button]
-    public void SetWayTo(TileType tileType)
+    public void FillRoomWithHallways()
     {
-        ClearAllWayTypes();
-
-        for (int i = 0; i < _wayTiles.Length; i++)
+        switch (_roomType)
         {
-            Instantiate(TilesManager.TileCollections[tileType].GetRandomWayView(), _wayTiles[i].transform);
+            case RoomType.Full:
+               CreateUpHall();
+                CreateDownHall();
+                CreateLeftHall();
+                CreateRightHall();
+                break;
+            case RoomType.LeftOff:
+                CreateUpHall();
+                CreateDownHall();
+                CreateRightHall();
+                break;
+            case RoomType.RightOff:
+                CreateUpHall();
+                CreateDownHall();
+                CreateLeftHall();
+                break;
+            case RoomType.UpOff:
+                CreateDownHall();
+                CreateLeftHall();
+                CreateRightHall();
+                break;
+            case RoomType.DownOff:
+                CreateUpHall();
+                CreateLeftHall();
+                CreateRightHall();
+                break;
         }
     }
 
     [Button]
-    public void ClearAllWayTypes()
+    public void ClearRoomWithHallways()
     {
-        for (int i = 0; i < _wayTiles.Length; i++)
-        {
-            RemoveAllChildren(_wayTiles[i].transform);
-        }
+        RemoveAllChildren(_upHallParent);
+        RemoveAllChildren(_rightHallParent);
+        RemoveAllChildren(_leftHallParent);
+        RemoveAllChildren(_downHallParent);
     }
 
-    [Button]
-    public void SetWallTo(TileType tileType)
+    private void CreateUpHall()
     {
-        ClearAllWallTypes();
-
-        for (int i = 0; i < _wayTiles.Length; i++)
-        {
-            Instantiate(TilesManager.TileCollections[tileType].GetRandomWayView(), _wayTiles[i].transform);
-        }
+        Transform hall = Instantiate(HallwayHandler.GetRandomVerticalHall(), _upHallParent).transform;
+        hall.localPosition = Vector3.zero;
     }
 
-    [Button]
-    public void ClearAllWallTypes()
+    private void CreateDownHall()
     {
-        for (int i = 0; i < _wayTiles.Length; i++)
-        {
-            RemoveAllChildren(_wayTiles[i].transform);
-        }
+        Transform hall = Instantiate(HallwayHandler.GetRandomVerticalHall(), _downHallParent).transform;
+        hall.localPosition = Vector3.zero;
+    }
+
+    private void CreateLeftHall()
+    {
+        Transform hall = Instantiate(HallwayHandler.GetRandomHorizontalHall(), _leftHallParent).transform;
+        hall.localPosition = Vector3.zero;
+    }
+
+    private void CreateRightHall()
+    {
+        Transform hall = Instantiate(HallwayHandler.GetRandomHorizontalHall(), _rightHallParent).transform;
+        hall.localPosition = Vector3.zero;
     }
 
     private void RemoveAllChildren(Transform transform)
