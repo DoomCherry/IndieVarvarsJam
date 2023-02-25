@@ -6,10 +6,28 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public string _isWalkBoolName = "IsWalk";
     public Rigidbody rigidbody;
     public float speed = 2;
     public LayerMask enemy;
     public int hp = 3;
+    public SpriteRenderer _spriteRenderer;
+    private Animator _animator;
+
+
+
+
+    private SpriteRenderer SpriteRenderer
+    {
+        get => _spriteRenderer;
+    }
+
+    private Animator Animator
+    {
+        get => _animator = _animator ??= GetComponent<Animator>();
+    }
+
+
 
 
     void Start()
@@ -37,25 +55,32 @@ public class Player : MonoBehaviour
         void Move()
         {
             Vector3 moveDirection = Vector3.zero;
+            Animator.SetBool(_isWalkBoolName, false);
 
             if (Input.GetKey(KeyCode.W))
             {
                 moveDirection.z = 1;
+                Animator.SetBool(_isWalkBoolName, true);
             }
 
             if (Input.GetKey(KeyCode.S))
             {
                 moveDirection.z = -1;
+                Animator.SetBool(_isWalkBoolName, true);
             }
 
             if (Input.GetKey(KeyCode.A))
             {
                 moveDirection.x = -1;
+                SpriteRenderer.flipX = true;
+                Animator.SetBool(_isWalkBoolName, true);
             }
 
             if (Input.GetKey(KeyCode.D))
             {
                 moveDirection.x = 1;
+                SpriteRenderer.flipX = false;
+                Animator.SetBool(_isWalkBoolName, true);
             }
 
             rigidbody.velocity = moveDirection.normalized * speed;
