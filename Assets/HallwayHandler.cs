@@ -49,8 +49,10 @@ public class HallwayHandler : MonoBehaviour
 
         for (int i = 0; i < collection.Length; i++)
         {
-            if (randomValue >= currentDownChance && randomValue < collection[i].chanceToDrop)
+            if (randomValue >= currentDownChance && randomValue < currentDownChance + collection[i].chanceToDrop)
                 return collection[i].hallVariation;
+
+            currentDownChance += collection[i].chanceToDrop;
         }
 
         return collection.Last().hallVariation;

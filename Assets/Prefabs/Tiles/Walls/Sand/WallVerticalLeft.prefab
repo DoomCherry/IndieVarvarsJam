@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8743115964676854965}
   - component: {fileID: 2594149307515735894}
   - component: {fileID: 6305872956144826802}
-  - component: {fileID: 814932913946632362}
   m_Layer: 0
   m_Name: WallVerticalLeft
   m_TagString: Untagged
@@ -97,19 +96,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.765459, y: 4.999999, z: 7.66}
   m_Center: {x: -1.1172705, y: 0, z: 0}
---- !u!114 &814932913946632362
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4319209367407056876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 1
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff

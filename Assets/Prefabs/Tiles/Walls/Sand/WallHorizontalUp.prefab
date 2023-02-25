@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5314151525059623835}
   - component: {fileID: 3913411907017247452}
   - component: {fileID: 414927847068513837}
-  - component: {fileID: 8949821406569236630}
   m_Layer: 0
   m_Name: WallHorizontalUp
   m_TagString: Untagged
@@ -97,19 +96,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5, y: 2.807756, z: 7.66}
   m_Center: {x: 0, y: 1.0961221, z: 1.3659812e-15}
---- !u!114 &8949821406569236630
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 659305331735194499}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 1
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff

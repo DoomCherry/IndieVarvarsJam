@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8061739957893715726}
   - component: {fileID: 2164284060380492235}
   - component: {fileID: 3741455247332379501}
-  - component: {fileID: 2791158112336545846}
   - component: {fileID: 321420982818313902}
   m_Layer: 0
   m_Name: WallRightDown
@@ -98,22 +97,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5, y: 2.6842043, z: 7.66}
   m_Center: {x: 0, y: -1.157898, z: -2.2438682e-15}
---- !u!114 &2791158112336545846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5247090521822292425}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 1
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!65 &321420982818313902
 BoxCollider:
   m_ObjectHideFlags: 0

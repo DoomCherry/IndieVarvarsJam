@@ -1,6 +1,5 @@
 using NaughtyAttributes;
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public enum RoomType
@@ -9,7 +8,7 @@ public enum RoomType
     LeftOff,
     RightOff,
     UpOff,
-    DownOff
+    DownOff,
 }
 
 [RequireComponent(typeof(HallwayHandler))]
@@ -26,6 +25,22 @@ public class RoomHandler : MonoBehaviour
 
     [Required]
     [SerializeField] private Transform _downHallParent;
+
+
+
+    [Required]
+    [SerializeField] private TriggerController _leftTrigger;
+
+    [Required]
+    [SerializeField] private TriggerController _rightTrigger;
+
+    [Required]
+    [SerializeField] private TriggerController _upTrigger;
+
+    [Required]
+    [SerializeField] private TriggerController _downTrigger;
+
+
 
     [SerializeField] private RoomType _roomType;
 
@@ -49,35 +64,43 @@ public class RoomHandler : MonoBehaviour
 
 
     [Button]
-    public void FillRoomWithHallways()
+    public void FillRoomWithHallways(bool includeUp = true, bool includeDown = true, bool includeRight = true, bool includeLeft = true)
     {
         switch (_roomType)
         {
             case RoomType.Full:
-               CreateUpHall();
-                CreateDownHall();
-                CreateLeftHall();
-                CreateRightHall();
+                if (includeUp) CreateUpHall(); else DeleteUpTrigger();
+                if (includeDown) CreateDownHall(); else DeleteDownTrigger();
+                if (includeLeft) CreateLeftHall(); else DeleteLeftTrigger();
+                if (includeRight) CreateRightHall(); else DeleteRightTrigger();
                 break;
             case RoomType.LeftOff:
-                CreateUpHall();
-                CreateDownHall();
-                CreateRightHall();
+                if (includeUp) CreateUpHall(); else DeleteUpTrigger();
+                if (includeDown) CreateDownHall(); else DeleteDownTrigger();
+                if (includeRight) CreateRightHall(); else DeleteRightTrigger();
+
+                DeleteLeftTrigger();
                 break;
             case RoomType.RightOff:
-                CreateUpHall();
-                CreateDownHall();
-                CreateLeftHall();
+                if (includeUp) CreateUpHall(); else DeleteUpTrigger();
+                if (includeDown) CreateDownHall(); else DeleteDownTrigger();
+                if (includeLeft) CreateLeftHall(); else DeleteLeftTrigger();
+
+                DeleteRightTrigger();
                 break;
             case RoomType.UpOff:
-                CreateDownHall();
-                CreateLeftHall();
-                CreateRightHall();
+                if (includeDown) CreateDownHall(); else DeleteDownTrigger();
+                if (includeLeft) CreateLeftHall(); else DeleteLeftTrigger();
+                if (includeRight) CreateRightHall(); else DeleteRightTrigger();
+
+                DeleteUpTrigger();
                 break;
             case RoomType.DownOff:
-                CreateUpHall();
-                CreateLeftHall();
-                CreateRightHall();
+                if (includeUp) CreateUpHall(); else DeleteUpTrigger();
+                if (includeLeft) CreateLeftHall(); else DeleteLeftTrigger();
+                if (includeRight) CreateRightHall(); else DeleteRightTrigger();
+
+                DeleteDownTrigger();
                 break;
         }
     }
@@ -89,6 +112,50 @@ public class RoomHandler : MonoBehaviour
         RemoveAllChildren(_rightHallParent);
         RemoveAllChildren(_leftHallParent);
         RemoveAllChildren(_downHallParent);
+    }
+
+    public void InitializeUpTrigger(Action onTriggerEntered, Action onTriggerExited)
+    {
+        _upTrigger.OnTriggerEntered += onTriggerEntered;
+        _upTrigger.OnTriggerEntered += onTriggerExited;
+    }
+
+    public void DeleteUpTrigger()
+    {
+        Destroy(_upTrigger.gameObject);
+    }
+
+    public void InitializeDownTrigger(Action onTriggerEntered, Action onTriggerExited)
+    {
+        _downTrigger.OnTriggerEntered += onTriggerEntered;
+        _downTrigger.OnTriggerEntered += onTriggerExited;
+    }
+
+    public void DeleteDownTrigger()
+    {
+        Destroy(_downTrigger.gameObject);
+    }
+
+    public void InitializeRightTrigger(Action onTriggerEntered, Action onTriggerExited)
+    {
+        _rightTrigger.OnTriggerEntered += onTriggerEntered;
+        _rightTrigger.OnTriggerEntered += onTriggerExited;
+    }
+
+    public void DeleteRightTrigger()
+    {
+        Destroy(_rightTrigger.gameObject);
+    }
+
+    public void InitializeLeftTrigger(Action onTriggerEntered, Action onTriggerExited)
+    {
+        _leftTrigger.OnTriggerEntered += onTriggerEntered;
+        _leftTrigger.OnTriggerEntered += onTriggerExited;
+    }
+
+    public void DeleteLeftTrigger()
+    {
+        Destroy(_leftTrigger.gameObject);
     }
 
     private void CreateUpHall()
