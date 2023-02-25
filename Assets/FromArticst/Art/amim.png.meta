@@ -45,7 +45,7 @@ TextureImporter:
       213: 4154262479818576171
     second: amim_13
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 1
@@ -66,6 +66,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -104,7 +105,6 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
-  cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -138,7 +138,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 504
+        y: 502
         width: 500
         height: 500
       alignment: 0
@@ -159,7 +159,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 500
-        y: 504
+        y: 502
         width: 500
         height: 500
       alignment: 0
@@ -180,7 +180,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1000
-        y: 504
+        y: 502
         width: 500
         height: 500
       alignment: 0
@@ -201,7 +201,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1500
-        y: 504
+        y: 502
         width: 500
         height: 500
       alignment: 0
@@ -222,7 +222,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2000
-        y: 504
+        y: 502
         width: 500
         height: 500
       alignment: 0
@@ -243,7 +243,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2500
-        y: 504
+        y: 502
         width: 500
         height: 500
       alignment: 0
@@ -264,7 +264,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 3000
-        y: 504
+        y: 502
         width: 500
         height: 500
       alignment: 0
@@ -285,7 +285,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 3500
-        y: 504
+        y: 502
         width: 500
         height: 500
       alignment: 0
@@ -306,7 +306,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 4
+        y: 2
         width: 500
         height: 500
       alignment: 0
@@ -327,7 +327,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 500
-        y: 4
+        y: 2
         width: 500
         height: 500
       alignment: 0
@@ -348,7 +348,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1000
-        y: 4
+        y: 2
         width: 500
         height: 500
       alignment: 0
@@ -369,7 +369,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1500
-        y: 4
+        y: 2
         width: 500
         height: 500
       alignment: 0
@@ -390,7 +390,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2000
-        y: 4
+        y: 2
         width: 500
         height: 500
       alignment: 0
@@ -406,27 +406,6 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: amim_13
-      rect:
-        serializedVersion: 2
-        x: 3500
-        y: 4
-        width: 500
-        height: 500
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b21d15517b7e6a930800000000000000
-      internalID: 4154262479818576171
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -437,6 +416,20 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      amim_8: -4434057779598411595
+      amim_0: 4150538772302703193
+      amim_3: -20389735112800066
+      amim_1: -2348040934468669352
+      amim_12: 6115814317040929506
+      amim_5: 2342680874697114850
+      amim_7: -2496845641392738471
+      amim_11: -4303795585489323464
+      amim_2: -3439598105859406089
+      amim_9: 3460537401108983351
+      amim_4: -6238584525791763558
+      amim_10: -6737340800054006272
+      amim_6: -839746569974803586
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
