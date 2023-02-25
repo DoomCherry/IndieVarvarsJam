@@ -143,6 +143,15 @@ MonoBehaviour:
   - _hallType: 2
     hallVariation: {fileID: 2861570845272670079, guid: 035c3290d0092824c802f78b5c89f66e, type: 3}
     chanceToDrop: 1
+  - _hallType: 3
+    hallVariation: {fileID: 968495149798681252, guid: 349c33cb442430348aaa172d1b58367d, type: 3}
+    chanceToDrop: 1
+  - _hallType: 5
+    hallVariation: {fileID: 1638537118404605396, guid: 3879ff646f7ddde44a2f564617984bf8, type: 3}
+    chanceToDrop: 1
+  - _hallType: 4
+    hallVariation: {fileID: 6267547220169841695, guid: 62b66799c5892ff4c9b4111d717d6012, type: 3}
+    chanceToDrop: 1
   _verticalHall:
   - _hallType: 0
     hallVariation: {fileID: 4777680696164173961, guid: 1811da4d2c94e7d459ee3805690e1375, type: 3}
@@ -155,6 +164,15 @@ MonoBehaviour:
     chanceToDrop: 1
   - _hallType: 2
     hallVariation: {fileID: 8415260369188047601, guid: 88f7d10972611bd4b84c7a335c593416, type: 3}
+    chanceToDrop: 1
+  - _hallType: 3
+    hallVariation: {fileID: 4387727969342621691, guid: bf7fb929c2417344ea35a988528a7fa3, type: 3}
+    chanceToDrop: 1
+  - _hallType: 5
+    hallVariation: {fileID: 76529157066350167, guid: a161bfb8bfc345342ab5cb9e0692f125, type: 3}
+    chanceToDrop: 1
+  - _hallType: 4
+    hallVariation: {fileID: 1164271154172001136, guid: 2f5a51e70e3b38e4180966e2d55e7624, type: 3}
     chanceToDrop: 1
 --- !u!1 &7847438014112549321
 GameObject:

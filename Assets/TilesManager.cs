@@ -10,6 +10,8 @@ public enum TileType
     Sand,
     Mushroom,
     GarbagePath,
+    Smoke,
+    Hotel,
 
     //It's in end
     Simple,
