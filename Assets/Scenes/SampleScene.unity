@@ -1356,6 +1356,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _roomVariations:
   - variation: {fileID: 7847438013179899478, guid: 2d45be93dcf0afe43bc6cc17d66fb940, type: 3}
+    chance: 0.5
+  - variation: {fileID: 7257331336606133212, guid: 3f32e4f1973ee364db7ea17c6b44f68b, type: 3}
+    chance: 1
+  - variation: {fileID: 6462318054099084593, guid: 20eaef97d28d6d948b558259f20b1048, type: 3}
+    chance: 1
+  - variation: {fileID: 999351067014156059, guid: 34a3476642392dc4fbdfac4cc106bd0e, type: 3}
     chance: 1
   _multPos: {x: 60, y: 50}
   _startIndex: 0
