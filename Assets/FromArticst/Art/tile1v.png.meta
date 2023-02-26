@@ -105,7 +105,7 @@ TextureImporter:
       213: -3866426151895748285
     second: tile1v_33
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 1
@@ -126,7 +126,6 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -165,6 +164,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -983,42 +983,6 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      tile1v_2: 9090549794859962604
-      tile1v_0: 5386026250649717854
-      tile1v_26: -104019607707683106
-      tile1v_35: 1985163691
-      tile1v_34: -2002941487
-      tile1v_25: -5591325461823755894
-      tile1v_14: -3495537422730282409
-      tile1v_5: -3537560803212334228
-      tile1v_18: 7440661162587529129
-      tile1v_16: -4346345883732568905
-      tile1v_4: -9164535375426515987
-      tile1v_6: 7742573397108545304
-      tile1v_12: 6455599166428093988
-      tile1v_13: 6409445856167311923
-      tile1v_20: 3691048154975915703
-      tile1v_19: -7873738701380654779
-      tile1v_33: -3866426151895748285
-      tile1v_32: -7377401882649883165
-      tile1v_28: 2294910455007974513
-      tile1v_7: -8109571974183660733
-      tile1v_1: 4949677061504239273
-      tile1v_10: -3146436985385054935
-      tile1v_17: 6119190749540806501
-      tile1v_11: -3452138522573478399
-      tile1v_27: 8858231093583013696
-      tile1v_9: 5492986888865863218
-      tile1v_31: 7539224014703676141
-      tile1v_21: 6522013477494201655
-      tile1v_23: -356154046240520458
-      tile1v_24: -3836806349021268854
-      tile1v_29: -530853597274517204
-      tile1v_8: -8389499254477759121
-      tile1v_15: -5389399461078175195
-      tile1v_22: -8570459957096601267
-      tile1v_30: 1145215503450721986
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
