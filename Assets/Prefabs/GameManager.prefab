@@ -49,7 +49,7 @@ MonoBehaviour:
   _restLevel: 40
   _gold: 0
   _maxTime: 9999
-  _nextStepTimeMult: 0.75
+  _timePerStep: 0.75
   _maxHungryPerStep: -5
   _maxThirstPerStep: -5
   _maxRestPerStep: -5
@@ -59,8 +59,9 @@ MonoBehaviour:
   _hotelDamage: 10
   _sandThirstAdd: -10
   _smokeHungryAdd: -10
-  _riverHungryAdd: 10
-  _fairHungryAdd: 10
+  _riverThirstAdd: 20
+  _fairHungryAdd: 20
   _mushroomHungryAdd: 10
   _mushroomDamage: 10
   _mushroomPositiveChance: 0.65
+  _defaultHallType: 0

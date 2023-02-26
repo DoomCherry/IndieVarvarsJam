@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using SimpleMan.AsyncOperations;
 using SimpleMan.VisualRaycast;
 using System.Collections;
@@ -13,6 +14,11 @@ public class Player : MonoBehaviour
     public int hp = 3;
     public SpriteRenderer _spriteRenderer;
     private Animator _animator;
+    public Color _positiveColor;
+    public Color _negativeColor;
+
+    public ParticleSystem _changeHp, _changeHungry, changeThirst, changeRest, changeGold;
+
 
 
 
@@ -85,6 +91,46 @@ public class Player : MonoBehaviour
 
             rigidbody.velocity = moveDirection.normalized * speed;
         }
+    }
+
+    [Button]
+    public void ChangeHp(bool IsPositive = true)
+    {
+        var main = _changeHp.main;
+        main.startColor = IsPositive ? _positiveColor : _negativeColor;
+        _changeHp.Play();
+    }
+
+    [Button]
+    public void ChangeHungry(bool IsPositive = true)
+    {
+        var main = _changeHungry.main;
+        main.startColor = IsPositive ? _positiveColor : _negativeColor;
+        _changeHungry.Play();
+    }
+
+    [Button]
+    public void ChangeThirst(bool IsPositive = true)
+    {
+        var main = changeThirst.main;
+        main.startColor = IsPositive ? _positiveColor : _negativeColor;
+        changeThirst.Play();
+    }
+
+    [Button]
+    public void ChangeRest(bool IsPositive = true)
+    {
+        var main = changeRest.main;
+        main.startColor = IsPositive ? _positiveColor : _negativeColor;
+        changeRest.Play();
+    }
+
+    [Button]
+    public void ChangeGold(bool IsPositive = true)
+    {
+        var main = changeGold.main;
+        main.startColor = IsPositive ? _positiveColor : _negativeColor;
+        changeGold.Play();
     }
 
     void TryShot()
