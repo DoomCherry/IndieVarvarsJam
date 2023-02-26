@@ -8,28 +8,35 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    public NavMeshAgent agent;
     public ParticleSystem explosionEffectPrefab;
     public LayerMask player;
-    private Transform target;
+    private Player target;
+    public float damage = 10;
+    public float ActivationDelay = 1;
+    public float livetime = 12;
 
     // Start is called before the first frame update
     void Start()
     {
-        target = FindObjectOfType<Player>().transform;
-        this.RepeatForever(TryFindPlayer, 0.5f);
+        this.Delay(ActivationDelay, ActivateEnemy);
+        this.Delay(livetime, () => Destroy(gameObject));
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ActivateEnemy()
     {
-        agent.SetDestination(target.position);
+        target = FindObjectOfType<Player>();
+        this.RepeatForever(TryFindPlayer, 0.5f);
     }
 
     private void OnDestroy()
     {
         if (explosionEffectPrefab != null)
-            Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
+        {
+            var e = Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
+            e.Play();
+            target.ChangeHp(false);
+            GameManager.self.TakeDamage(damage);
+        }
     }
 
     void TryFindPlayer()
@@ -41,7 +48,7 @@ public class Enemy : MonoBehaviour
 
             if (player != null)
             {
-                player.hp -= 1;
+                player.DeactivateBomb();
                 Destroy(gameObject);
             }
         }

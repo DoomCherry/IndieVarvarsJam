@@ -3,14 +3,20 @@ using SimpleMan.AsyncOperations;
 using SimpleMan.VisualRaycast;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public GameObject bombUI;
+    public TextMeshProUGUI textBomb;
+    public int bombTimer = 10;
+    public float bombEatAdd = 20;
+
     public string _isWalkBoolName = "IsWalk";
     public Rigidbody rigidbody;
     public float speed = 2;
-    public Vector2 _autoMoveDuration = new Vector2(2,4);
+    public Vector2 _autoMoveDuration = new Vector2(2, 4);
     public LayerMask enemy;
     public int hp = 3;
     public SpriteRenderer _spriteRenderer;
@@ -41,6 +47,11 @@ public class Player : MonoBehaviour
 
 
 
+
+    private void Start()
+    {
+        DiactivateBombMenu();
+    }
 
     void FixedUpdate()
     {
@@ -100,6 +111,60 @@ public class Player : MonoBehaviour
     {
         OnTakeSomething?.Invoke();
     }
+
+    private float bombTick = 0;
+    private Coroutine bombProcess;
+
+    [Button]
+    public void StartBomb()
+    {
+        bombUI.SetActive(true);
+        textBomb.text = bombTimer.ToString();
+        bombTick = bombTimer;
+
+        bombProcess = this.RepeatUntil(IsExploid, MinusTimer, Explosion, 1);
+
+
+
+        bool IsExploid()
+        {
+            return bombTick == 0;
+        }
+
+        void Explosion()
+        {
+            DiactivateBombMenu();
+
+            ChangeHungry(true);
+
+            GameManager.self.ChangeHungryLevel(bombEatAdd);
+            GameManager.self.TakeAllEffectsUI();
+
+            StopCoroutine(bombProcess);
+        }
+
+        void MinusTimer()
+        {
+            bombTick--;
+            textBomb.text = bombTick.ToString();
+        }
+    }
+
+    public void DeactivateBomb()
+    {
+        DiactivateBombMenu();
+
+        if (bombProcess != null)
+            StopCoroutine(bombProcess);
+    }
+
+    private void DiactivateBombMenu()
+    {
+        bombUI.SetActive(false);
+        textBomb.text = "";
+    }
+
+
 
     [Button]
     public void ChangeHp(bool IsPositive = true)
