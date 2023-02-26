@@ -985,15 +985,15 @@ MonoBehaviour:
   _gold: 0
   _maxTime: 9999
   _nextStepTimeMult: 0.75
-  _maxHungryPerStep: -1
-  _maxThirstPerStep: -1
-  _maxRestPerStep: -1
-  _maxHpPerStep: 1
+  _maxHungryPerStep: -5
+  _maxThirstPerStep: -5
+  _maxRestPerStep: -5
+  _maxHpPerStep: 3
   _minimalRestMult: 0.25
   _hotelMoneyPay: 100
   _hotelDamage: 10
-  _sandThirstAdd: 10
-  _smokeHungryAdd: 10
+  _sandThirstAdd: -10
+  _smokeHungryAdd: -10
   _riverHungryAdd: 10
   _fairHungryAdd: 10
   _mushroomHungryAdd: 10

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1299419594268558730
+--- !u!1 &976753979835831568
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1299419594268558732}
-  - component: {fileID: 1299419594268558733}
+  - component: {fileID: 976753979835831574}
+  - component: {fileID: 976753979835831575}
   m_Layer: 0
   m_Name: MapHandler
   m_TagString: Untagged
@@ -17,27 +17,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1299419594268558732
+--- !u!4 &976753979835831574
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1299419594268558730}
+  m_GameObject: {fileID: 976753979835831568}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.00000011920929, z: 0.23973846}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1299419594268558733
+--- !u!114 &976753979835831575
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1299419594268558730}
+  m_GameObject: {fileID: 976753979835831568}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7bd82d43767bec941abdad41ed56a7f6, type: 3}
@@ -45,6 +45,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _roomVariations:
   - variation: {fileID: 7847438013179899478, guid: 2d45be93dcf0afe43bc6cc17d66fb940, type: 3}
+    chance: 0.5
+  - variation: {fileID: 7257331336606133212, guid: 3f32e4f1973ee364db7ea17c6b44f68b, type: 3}
+    chance: 1
+  - variation: {fileID: 6462318054099084593, guid: 20eaef97d28d6d948b558259f20b1048, type: 3}
+    chance: 1
+  - variation: {fileID: 999351067014156059, guid: 34a3476642392dc4fbdfac4cc106bd0e, type: 3}
     chance: 1
   _multPos: {x: 60, y: 50}
   _startIndex: 0

@@ -139,8 +139,8 @@ public class GameManager : MonoBehaviour
 
     private void ApplyEffectForPath()
     {
-        ChangeHungryLevel(-_maxHungryPerStep);
-        ChangeThirthLevel(-_maxThirstPerStep);
+        ChangeHungryLevel(_maxHungryPerStep);
+        ChangeThirthLevel(_maxThirstPerStep);
 
         ChangeRestLevel(_maxRestPerStep * Mathf.Lerp(-1, 1, CurrentHungryProportion));
         TakeDamage(_maxHpPerStep * Mathf.Lerp(1, 0, CurrentThirstProportion));
