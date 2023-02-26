@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public enum TileType
+public enum HallType
 {
     River,
     Sand,
@@ -124,18 +124,18 @@ public class TileInfo
 public struct TileKeyPair
 {
     [SerializeField] public TileInfo value;
-    public TileType key;
+    public HallType key;
 }
 
 public class TilesManager : MonoBehaviour
 {
     [SerializeField] private List<TileKeyPair> _tileKeyPairs = new List<TileKeyPair>();
-    private Dictionary<TileType, TileInfo> _tileCollections = new Dictionary<TileType, TileInfo>();
+    private Dictionary<HallType, TileInfo> _tileCollections = new Dictionary<HallType, TileInfo>();
 
 
 
 
-    public Dictionary<TileType, TileInfo> TileCollections
+    public Dictionary<HallType, TileInfo> TileCollections
     {
         get
         {
@@ -189,15 +189,15 @@ public class TilesManager : MonoBehaviour
 
 
 
-        TileType FindNotUseTileType()
+        HallType FindNotUseTileType()
         {
-            for (int i = 0; i < (int)TileType.Simple; i++)
+            for (int i = 0; i < (int)HallType.Simple; i++)
             {
-                if (_tileKeyPairs.Where(n => n.key == (TileType)i).Count() == 0)
-                    return (TileType)i;
+                if (_tileKeyPairs.Where(n => n.key == (HallType)i).Count() == 0)
+                    return (HallType)i;
             }
 
-            return TileType.Simple;
+            return HallType.Simple;
         }
     }
 }

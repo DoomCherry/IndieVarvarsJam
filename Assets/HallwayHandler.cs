@@ -14,7 +14,7 @@ public enum HallwayType
 [Serializable]
 public struct HallwayInfo
 {
-    public TileType _hallType;
+    public HallType _hallType;
     public GameObject hallVariation;
     public float chanceToDrop;
 }
@@ -28,17 +28,17 @@ public class HallwayHandler : MonoBehaviour
 
    
 
-    public GameObject GetRandomVerticalHall()
+    public HallwayInfo GetRandomVerticalHall()
     {
         return GetRandomHall(_verticalHall);
     }
 
-    public GameObject GetRandomHorizontalHall()
+    public HallwayInfo GetRandomHorizontalHall()
     {
         return GetRandomHall(_horizontalHall);
     }
 
-    private GameObject GetRandomHall(HallwayInfo[] collection)
+    private HallwayInfo GetRandomHall(HallwayInfo[] collection)
     {
         float maxChance = GetMaxChance(collection);
         float randomValue = UnityEngine.Random.Range(0, maxChance);
@@ -50,12 +50,12 @@ public class HallwayHandler : MonoBehaviour
         for (int i = 0; i < collection.Length; i++)
         {
             if (randomValue >= currentDownChance && randomValue < currentDownChance + collection[i].chanceToDrop)
-                return collection[i].hallVariation;
+                return collection[i];
 
             currentDownChance += collection[i].chanceToDrop;
         }
 
-        return collection.Last().hallVariation;
+        return collection.Last();
     }
 
     private float GetMaxChance(HallwayInfo[] collection)

@@ -60,6 +60,10 @@ public class RoomHandler : MonoBehaviour
         set => _roomType = value;
     }
 
+    public HallwayInfo UpHall { get; private set; }
+    public HallwayInfo DownHall { get; private set; }
+    public HallwayInfo RightHall { get; private set; }
+    public HallwayInfo LeftHall { get; private set; }
 
 
 
@@ -160,25 +164,29 @@ public class RoomHandler : MonoBehaviour
 
     private void CreateUpHall()
     {
-        Transform hall = Instantiate(HallwayHandler.GetRandomVerticalHall(), _upHallParent).transform;
+        UpHall = HallwayHandler.GetRandomVerticalHall();
+        Transform hall = Instantiate(UpHall.hallVariation, _upHallParent).transform;
         hall.localPosition = Vector3.zero;
     }
 
     private void CreateDownHall()
     {
-        Transform hall = Instantiate(HallwayHandler.GetRandomVerticalHall(), _downHallParent).transform;
+        DownHall = HallwayHandler.GetRandomVerticalHall();
+        Transform hall = Instantiate(DownHall.hallVariation, _downHallParent).transform;
         hall.localPosition = Vector3.zero;
     }
 
     private void CreateLeftHall()
     {
-        Transform hall = Instantiate(HallwayHandler.GetRandomHorizontalHall(), _leftHallParent).transform;
+        LeftHall = HallwayHandler.GetRandomHorizontalHall();
+        Transform hall = Instantiate(LeftHall.hallVariation, _leftHallParent).transform;
         hall.localPosition = Vector3.zero;
     }
 
     private void CreateRightHall()
     {
-        Transform hall = Instantiate(HallwayHandler.GetRandomHorizontalHall(), _rightHallParent).transform;
+        RightHall = HallwayHandler.GetRandomHorizontalHall();
+        Transform hall = Instantiate(RightHall.hallVariation, _rightHallParent).transform;
         hall.localPosition = Vector3.zero;
     }
 

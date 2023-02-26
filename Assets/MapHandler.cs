@@ -148,9 +148,17 @@ public class MapHandler : MonoBehaviour
         {
             CreateUpRoom(key);
             _map[key].DeleteUpTrigger();
+            GameManager.self.GoToNextPath(GetHallType());
         }
 
         return OnEnter;
+
+
+
+        HallType GetHallType()
+        {
+            return _map[key].UpHall._hallType;
+        }
     }
 
     private Action OnDownEnter(Vector2 key)
@@ -159,9 +167,17 @@ public class MapHandler : MonoBehaviour
         {
             CreateDownRoom(key);
             _map[key].DeleteDownTrigger();
+            GameManager.self.GoToNextPath(GetHallType());
         }
 
         return OnEnter;
+
+
+
+        HallType GetHallType()
+        {
+            return _map[key].UpHall._hallType;
+        }
     }
 
     private Action OnLeftEnter(Vector2 key)
@@ -170,9 +186,17 @@ public class MapHandler : MonoBehaviour
         {
             CreateLeftRoom(key);
             _map[key].DeleteLeftTrigger();
+            GameManager.self.GoToNextPath(GetHallType());
         }
 
         return OnEnter;
+
+
+
+        HallType GetHallType()
+        {
+            return _map[key].UpHall._hallType;
+        }
     }
 
     private Action OnRightEnter(Vector2 key)
@@ -181,9 +205,17 @@ public class MapHandler : MonoBehaviour
         {
             CreateRightRoom(key);
             _map[key].DeleteRightTrigger();
+            GameManager.self.GoToNextPath(GetHallType());
         }
 
         return OnEnter;
+
+
+
+        HallType GetHallType()
+        {
+            return _map[key].UpHall._hallType;
+        }
     }
 
     private Action OnUpExit(Vector2 key)
