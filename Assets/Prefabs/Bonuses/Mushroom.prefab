@@ -48,10 +48,12 @@ MonoBehaviour:
     bonusType: 1
     bonusAddCount: 5
     isVisualize: 1
+    playTakeSound: 0
   additionalBonuses:
   - bonusType: 0
     bonusAddCount: 5
     isVisualize: 0
+    playTakeSound: 0
   player:
     serializedVersion: 2
     m_Bits: 128
@@ -126,7 +128,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: -2011216184659823745, guid: 0870a50481bcf7b4da33d6b2b6371b01, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

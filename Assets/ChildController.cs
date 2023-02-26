@@ -1,18 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ChildController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public int _activateCountOnAwake = 3;
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        GameObject[] children = new GameObject[transform.childCount];
+
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            children[i] = transform.GetChild(i).gameObject;
+        }
+
+        GameObject[] activateChildren = children.OrderBy(x => Random.Range(0, transform.childCount)).Take(3).ToArray();
+
+        for (int i = 0; i < activateChildren.Length; i++)
+        {
+            activateChildren[i].SetActive(true);
+        }
     }
 }
