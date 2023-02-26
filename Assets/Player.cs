@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public string _isWalkBoolName = "IsWalk";
     public Rigidbody rigidbody;
     public float speed = 2;
+    public Vector2 _autoMoveDuration = new Vector2(2,4);
     public LayerMask enemy;
     public int hp = 3;
     public SpriteRenderer _spriteRenderer;
@@ -25,6 +26,8 @@ public class Player : MonoBehaviour
     public System.Action OnTakeGoldSomething;
     public System.Action OnTakeSomething;
 
+    private bool IsAutoMove = false;
+    private Coroutine AutoMoveProcess;
 
     private SpriteRenderer SpriteRenderer
     {
@@ -57,6 +60,9 @@ public class Player : MonoBehaviour
 
         void Move()
         {
+            if (IsAutoMove)
+                return;
+
             Vector3 moveDirection = Vector3.zero;
             Animator.SetBool(_isWalkBoolName, false);
 
@@ -139,5 +145,39 @@ public class Player : MonoBehaviour
         changeGold.Play();
 
         OnTakeGoldSomething?.Invoke();
+    }
+
+    [Button]
+    public void AutoMove()
+    {
+        AutoMove(-Vector3.right);
+    }
+
+    public void AutoMove(Vector3 direction)
+    {
+        IsAutoMove = true;
+
+        if (AutoMoveProcess != null)
+            StopCoroutine(AutoMoveProcess);
+
+        AutoMoveProcess = this.RepeatForever(AutoMoving, Time.fixedDeltaTime);
+        this.Delay(direction.x == 0 ? _autoMoveDuration.y : _autoMoveDuration.x, AutoMovingEnd);
+
+
+
+
+        void AutoMoving()
+        {
+            SpriteRenderer.flipX = direction.x == -1;
+            Animator.SetBool(_isWalkBoolName, true);
+            rigidbody.velocity = direction.normalized * speed;
+        }
+    }
+
+
+    private void AutoMovingEnd()
+    {
+        IsAutoMove = false;
+        StopCoroutine(AutoMoveProcess);
     }
 }

@@ -18,6 +18,7 @@ public class MapHandler : MonoBehaviour
     [SerializeField] private int _startIndex = 0;
 
     private Dictionary<Vector2, RoomHandler> _map = new Dictionary<Vector2, RoomHandler>();
+    private Player _player;
 
 
 
@@ -27,6 +28,8 @@ public class MapHandler : MonoBehaviour
         _map.Add(Vector2.zero, Instantiate(_roomVariations[_startIndex].variation, Vector2.zero, Quaternion.identity, transform));
         _map[Vector2.zero].RoomType = RoomType.Full;
         _map[Vector2.zero].FillRoomWithHallways();
+
+        _player = FindObjectOfType<Player>();
 
         InitUpRoom(Vector2.zero);
         InitDownRoom(Vector2.zero);
@@ -149,6 +152,7 @@ public class MapHandler : MonoBehaviour
             CreateUpRoom(key);
             _map[key].DeleteUpTrigger();
             GameManager.self.GoToNextPath(GetHallType());
+            _player.AutoMove(Vector3.forward);
         }
 
         return OnEnter;
@@ -168,6 +172,7 @@ public class MapHandler : MonoBehaviour
             CreateDownRoom(key);
             _map[key].DeleteDownTrigger();
             GameManager.self.GoToNextPath(GetHallType());
+            _player.AutoMove(- Vector3.forward);
         }
 
         return OnEnter;
@@ -187,6 +192,7 @@ public class MapHandler : MonoBehaviour
             CreateLeftRoom(key);
             _map[key].DeleteLeftTrigger();
             GameManager.self.GoToNextPath(GetHallType());
+            _player.AutoMove(-Vector3.right);
         }
 
         return OnEnter;
@@ -206,6 +212,7 @@ public class MapHandler : MonoBehaviour
             CreateRightRoom(key);
             _map[key].DeleteRightTrigger();
             GameManager.self.GoToNextPath(GetHallType());
+            _player.AutoMove(Vector3.right);
         }
 
         return OnEnter;

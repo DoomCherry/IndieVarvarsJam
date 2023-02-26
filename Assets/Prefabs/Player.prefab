@@ -10848,6 +10848,7 @@ MonoBehaviour:
   _isWalkBoolName: IsWalk
   rigidbody: {fileID: 3096368608908106242}
   speed: 10
+  _autoMoveDuration: {x: 4, y: 4}
   enemy:
     serializedVersion: 2
     m_Bits: 64
