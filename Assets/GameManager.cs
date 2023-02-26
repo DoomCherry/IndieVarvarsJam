@@ -171,16 +171,17 @@ public class GameManager : MonoBehaviour
         ApplyEffectFromPath(tileType);
         ApplyEffectForPath();
         TakeAllEffectsUI();
-        RefreshLastParam();
     }
 
-    private void TakeAllEffectsUI()
+    public void TakeAllEffectsUI()
     {
-        OnAddRestUI?.Invoke(_restLevel - _lastRest);
-        OnAddThirstUI?.Invoke(_thirthLevel - _lastThirst);
-        OnAddHungryUI?.Invoke(_hungryLevel - _lastHungry);
-        OnTakeDamageUI?.Invoke(_hp - _lastHp);
-        OnAddGoldUI?.Invoke(_gold - _lastGold);
+        if (_restLevel - _lastRest != 0) OnAddRestUI?.Invoke(_restLevel - _lastRest);
+        if (_thirthLevel - _lastThirst != 0) OnAddThirstUI?.Invoke(_thirthLevel - _lastThirst);
+        if (_hungryLevel - _lastHungry != 0) OnAddHungryUI?.Invoke(_hungryLevel - _lastHungry);
+        if (_hp - _lastHp != 0) OnTakeDamageUI?.Invoke(_hp - _lastHp);
+        if (_gold - _lastGold != 0) OnAddGoldUI?.Invoke(_gold - _lastGold);
+
+        RefreshLastParam();
     }
 
     private void ApplyEffectForPath()

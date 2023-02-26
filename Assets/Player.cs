@@ -20,7 +20,10 @@ public class Player : MonoBehaviour
     public ParticleSystem _changeHp, _changeHungry, changeThirst, changeRest, changeGold;
 
 
-
+    public System.Action OnEatSomething;
+    public System.Action OnDrinkSomething;
+    public System.Action OnTakeGoldSomething;
+    public System.Action OnTakeSomething;
 
 
     private SpriteRenderer SpriteRenderer
@@ -34,12 +37,6 @@ public class Player : MonoBehaviour
     }
 
 
-
-
-    void Start()
-    {
-        this.RepeatForever(TryShot, 0.5f);
-    }
 
 
     void FixedUpdate()
@@ -93,6 +90,11 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void TakeSomething()
+    {
+        OnTakeSomething?.Invoke();
+    }
+
     [Button]
     public void ChangeHp(bool IsPositive = true)
     {
@@ -107,6 +109,8 @@ public class Player : MonoBehaviour
         var main = _changeHungry.main;
         main.startColor = IsPositive ? _positiveColor : _negativeColor;
         _changeHungry.Play();
+
+        OnEatSomething?.Invoke();
     }
 
     [Button]
@@ -115,6 +119,8 @@ public class Player : MonoBehaviour
         var main = changeThirst.main;
         main.startColor = IsPositive ? _positiveColor : _negativeColor;
         changeThirst.Play();
+
+        OnDrinkSomething?.Invoke();
     }
 
     [Button]
@@ -131,22 +137,7 @@ public class Player : MonoBehaviour
         var main = changeGold.main;
         main.startColor = IsPositive ? _positiveColor : _negativeColor;
         changeGold.Play();
-    }
 
-    void TryShot()
-    {
-        var hitInfo = this.Boxcast().FromGameObjectInWorld(transform).ToDirection(transform.forward)
-            .SingleHit().WithSize(Vector3.one).WithDefaultRotation().WithDistance(10).UseCustomLayerMask(enemy).DontIgnoreAnything();
-
-        if (Input.GetMouseButton(0) && hitInfo.wasHit)
-        {
-            foreach (var item in hitInfo.hits)
-            {
-                if (item.collider.TryGetComponent(out Enemy enemy))
-                {
-                    Destroy(enemy.gameObject);
-                }
-            }
-        }
+        OnTakeGoldSomething?.Invoke();
     }
 }
