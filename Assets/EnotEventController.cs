@@ -79,6 +79,7 @@ public class EnotEventController : MonoBehaviour
     {
         _player.StartBomb();
         puf.Play();
+        puf.GetComponentInChildren<AudioSource>().Play();
     }
 
     public void MoveToRandomDirection()

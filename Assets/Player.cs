@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     public float bombEatAdd = 20;
 
     public string _isWalkBoolName = "IsWalk";
+    public string _isBombBoolName = "IsWithBomb";
     public Rigidbody rigidbody;
     public float speed = 2;
     public Vector2 _autoMoveDuration = new Vector2(2, 4);
@@ -32,7 +33,7 @@ public class Player : MonoBehaviour
     public System.Action OnTakeGoldSomething;
     public System.Action OnTakeSomething;
 
-    private bool IsAutoMove = false;
+    public bool IsAutoMove = false;
     private Coroutine AutoMoveProcess;
 
     private SpriteRenderer SpriteRenderer
@@ -55,8 +56,8 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (hp > 8)
-            hp = 8;
+        if (!GameManager.self.isTick)
+            return;
 
         Move();
 
@@ -121,6 +122,7 @@ public class Player : MonoBehaviour
         bombUI.SetActive(true);
         textBomb.text = bombTimer.ToString();
         bombTick = bombTimer;
+        Animator.SetBool(_isBombBoolName, true);
 
         bombProcess = this.RepeatUntil(IsExploid, MinusTimer, Explosion, 1);
 
@@ -160,6 +162,7 @@ public class Player : MonoBehaviour
 
     private void DiactivateBombMenu()
     {
+        Animator.SetBool(_isBombBoolName, false);
         bombUI.SetActive(false);
         textBomb.text = "";
     }
@@ -233,6 +236,9 @@ public class Player : MonoBehaviour
 
         void AutoMoving()
         {
+            if (!GameManager.self.isTick)
+                return;
+
             SpriteRenderer.flipX = direction.x == -1;
             Animator.SetBool(_isWalkBoolName, true);
             rigidbody.velocity = direction.normalized * speed;

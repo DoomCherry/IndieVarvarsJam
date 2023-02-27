@@ -25,14 +25,14 @@ namespace SimpleMan.VisualRaycast.Presentation
         public override void Draw()
         {
             Color color = _result ? _hitColor : _missColor;
-            ComplexGizmos.DrawWireSphere(_from, _radius, color);
+            //ComplexGizmos.DrawWireSphere(_from, _radius, color);
 
             if (!_result)
                 return;
 
             foreach (var hit in _result.detectedColliders)
             {
-                ComplexGizmos.DrawSphere(hit.ClosestPoint(_from), _hitPointRadius, color);
+                //ComplexGizmos.DrawSphere(hit.ClosestPoint(_from), _hitPointRadius, color);
             }
         }
     }

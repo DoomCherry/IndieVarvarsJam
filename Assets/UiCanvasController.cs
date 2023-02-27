@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UiCanvasController : MonoBehaviour
 {
-    public Slider time;
+    public Image time;
     public Image hp;
     public Image hungry;
     public Image thirst;
@@ -53,8 +54,7 @@ public class UiCanvasController : MonoBehaviour
 
     private void Update()
     {
-        time.value = GameManager.self.CurrentTimeProportion;
-
+        time.fillAmount = GameManager.self.CurrentTimeProportion;
         hp.fillAmount = GameManager.self.CurrentHpProportion;
         hungry.fillAmount = GameManager.self.CurrentHungryProportion;
         thirst.fillAmount = GameManager.self.CurrentThirstProportion;
@@ -126,5 +126,15 @@ public class UiCanvasController : MonoBehaviour
 
         if (idetify < 0)
             toText.color = _negativeColor;
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    public void ToMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 }

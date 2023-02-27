@@ -16,6 +16,7 @@ public class TextController : MonoBehaviour
 
     private float _textWriteDelay = 0.1f;
     private int _trying = 0;
+    public int currentPhrase = 0;
 
 
     public System.Action OnTextWrite;
@@ -111,7 +112,7 @@ public class TextController : MonoBehaviour
 
     private string GetRandomPhrase()
     {
-        int value = Random.Range(0, _phrases.Length);
-        return _phrases[value];
+        currentPhrase = Random.Range(0, _phrases.Length);
+        return _phrases[currentPhrase];
     }
 }

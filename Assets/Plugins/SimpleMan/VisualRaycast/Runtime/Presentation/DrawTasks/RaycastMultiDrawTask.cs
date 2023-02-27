@@ -28,7 +28,7 @@ namespace SimpleMan.VisualRaycast.Presentation
 
         private void DrawMissedRay()
         {
-            ComplexGizmos.DrawRay(_from, _direction, _distance, _missColor);
+            //ComplexGizmos.DrawRay(_from, _direction, _distance, _missColor);
         }
 
         private void DrawHitRay()
@@ -36,11 +36,11 @@ namespace SimpleMan.VisualRaycast.Presentation
             RaycastHit lastHit = _castResult.hits.Last();
             foreach (var hit in _castResult.hits)
             {
-                ComplexGizmos.DrawSphere(hit.point, _hitPointRadius, _hitColor);
+                //ComplexGizmos.DrawSphere(hit.point, _hitPointRadius, _hitColor);
             }
             
-            ComplexGizmos.DrawRay(_from, _direction, lastHit.distance, _hitColor);
-            ComplexGizmos.DrawRay(lastHit.point, _direction, _distance - lastHit.distance, _missColor);
+            //ComplexGizmos.DrawRay(_from, _direction, lastHit.distance, _hitColor);
+            //ComplexGizmos.DrawRay(lastHit.point, _direction, _distance - lastHit.distance, _missColor);
         }
     }
 }

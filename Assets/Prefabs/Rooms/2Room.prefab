@@ -671,7 +671,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6697146407376301909}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.341, y: 0.4, z: -0}
+  m_LocalPosition: {x: 2.6, y: 1.6000001, z: -0.00000019073487}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6697146407407536146}
@@ -743,7 +743,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _activateCountMaxOnAwake: 3
-  _activateCountMinOnAwake: 2
+  _activateCountMinOnAwake: 1
 --- !u!1 &6697146407597599381
 GameObject:
   m_ObjectHideFlags: 0
@@ -769,7 +769,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6697146407597599381}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.3034, y: -0.8, z: 0}
+  m_LocalPosition: {x: 0, y: 0.20000023, z: -0.00000009536743}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6697146407407536146}
@@ -793,6 +793,10 @@ MonoBehaviour:
   - gameObject: {fileID: 3887220670839618030, guid: 7a00b01af5fa8f3448546d9c5404cde8, type: 3}
     chance: 1
   - gameObject: {fileID: 2659120479298106229, guid: 7f43578cdf2a90549be98dddf09511b4, type: 3}
+    chance: 1
+  - gameObject: {fileID: 3751584506972694646, guid: a276a45d8364aeb4eb628f89e304c14b, type: 3}
+    chance: 0.7
+  - gameObject: {fileID: 1604745977598839408, guid: c6572f712273b834da4e4fd1d5c7232e, type: 3}
     chance: 1
 --- !u!1 &6697146408278846562
 GameObject:
@@ -819,7 +823,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6697146408278846562}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.029, y: -0.6, z: 0}
+  m_LocalPosition: {x: 1.5999999, y: -1.6, z: 0.00000009536743}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6697146407407536146}
@@ -890,8 +894,6 @@ MonoBehaviour:
   prefabs:
   - gameObject: {fileID: 1755604094642781240, guid: ab96c277d16e47245a758ef304554c13, type: 3}
     chance: 1
-  - gameObject: {fileID: 7687538110980902714, guid: 27ebfd015c791444fbb82e1eadeb06c0, type: 3}
-    chance: 2
 --- !u!1 &6697146408704200975
 GameObject:
   m_ObjectHideFlags: 0
@@ -917,7 +919,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6697146408704200975}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.5101, y: 1, z: -0}
+  m_LocalPosition: {x: -3.4, y: -0.8000002, z: 0.00000019073487}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6697146407407536146}
@@ -940,6 +942,8 @@ MonoBehaviour:
     chance: 1
   - gameObject: {fileID: 5784646945365070145, guid: 410b3605ab489f0419a9a606325a79b6, type: 3}
     chance: 1
+  - gameObject: {fileID: 7431379066062625605, guid: 1e0f9dc8f059b6e4c9ca35620521c0bb, type: 3}
+    chance: 0.2
 --- !u!1 &7517422924671477924
 GameObject:
   m_ObjectHideFlags: 0

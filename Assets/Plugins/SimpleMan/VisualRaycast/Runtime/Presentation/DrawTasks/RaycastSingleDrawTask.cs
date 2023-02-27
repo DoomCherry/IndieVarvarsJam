@@ -28,13 +28,13 @@ namespace SimpleMan.VisualRaycast.Presentation
 
         private void DrawMissedRay()
         {
-            ComplexGizmos.DrawRay(_from, _direction, _distance, _missColor);
+            //ComplexGizmos.DrawRay(_from, _direction, _distance, _missColor);
         }
 
         private void DrawHitRay()
         {
-            ComplexGizmos.DrawLine(_from, _castResult.hits.First().point, _hitColor);
-            ComplexGizmos.DrawSphere(_castResult.hits.First().point, _hitPointRadius, _hitColor);
+            //ComplexGizmos.DrawLine(_from, _castResult.hits.First().point, _hitColor);
+            //ComplexGizmos.DrawSphere(_castResult.hits.First().point, _hitPointRadius, _hitColor);
         }
     }
 }

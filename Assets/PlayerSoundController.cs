@@ -23,6 +23,9 @@ public class PlayerSoundController : MonoBehaviour
         this.RepeatForever(PlayRandomStep, _stepsDelay);
         _lastPosition = transform.position;
 
+        if (_playerRef == null)
+            return;
+
         _playerRef.OnDrinkSomething += PlayRandomDrink;
         _playerRef.OnEatSomething += PlayRandomEat;
         _playerRef.OnTakeGoldSomething += PlayRandomGold;

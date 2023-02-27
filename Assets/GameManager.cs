@@ -111,6 +111,9 @@ public class GameManager : MonoBehaviour
 
 
 
+    public GameObject _win, _lose;
+
+
 
     public Action<float> OnTakeDamageUI;
     public Action<float> OnAddHungryUI;
@@ -118,11 +121,12 @@ public class GameManager : MonoBehaviour
     public Action<float> OnAddRestUI;
     public Action<int> OnAddGoldUI;
 
-
-
+    public bool isTick = true;
+    Player _player;
 
     private void Awake()
     {
+        _player = FindObjectOfType<Player>();
         _currentTime = _maxTime;
         _maxHp = _hp;
         _maxHungryLevel = _hungryLevel;
@@ -137,7 +141,28 @@ public class GameManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _currentTime -= Time.fixedDeltaTime * GetRestTimeMult() * _currentStepNumber * _timePerStep;
+        if (!isTick)
+            return;
+
+        _currentTime -= _player.IsAutoMove ? 0 : Time.fixedDeltaTime * GetRestTimeMult() * _currentStepNumber * _timePerStep;
+
+
+
+        if (_currentTime <= 0)
+        {
+            _lose.SetActive(true);
+            isTick = false;
+            
+        }
+
+
+        if (_hp <= 0)
+        {
+            _win.SetActive(true);
+            isTick = false;
+        }
+
+
 
 
 
@@ -167,6 +192,7 @@ public class GameManager : MonoBehaviour
     public void GoToNextPath(HallType tileType)
     {
         _currentStepNumber++;
+        _currentTime = _maxTime;
 
         ApplyEffectFromPath(tileType);
         ApplyEffectForPath();
@@ -175,10 +201,10 @@ public class GameManager : MonoBehaviour
 
     public void TakeAllEffectsUI()
     {
-        if (_restLevel - _lastRest != 0) OnAddRestUI?.Invoke(_restLevel - _lastRest);
-        if (_thirthLevel - _lastThirst != 0) OnAddThirstUI?.Invoke(_thirthLevel - _lastThirst);
-        if (_hungryLevel - _lastHungry != 0) OnAddHungryUI?.Invoke(_hungryLevel - _lastHungry);
-        if (_hp - _lastHp != 0) OnTakeDamageUI?.Invoke(_hp - _lastHp);
+        if (_restLevel - _lastRest != 0) OnAddRestUI?.Invoke((float)Math.Round(_restLevel - _lastRest, 2));
+        if (_thirthLevel - _lastThirst != 0) OnAddThirstUI?.Invoke((float)Math.Round(_thirthLevel - _lastThirst, 2));
+        if (_hungryLevel - _lastHungry != 0) OnAddHungryUI?.Invoke((float)Math.Round(_hungryLevel - _lastHungry, 2));
+        if (_hp - _lastHp != 0) OnTakeDamageUI?.Invoke((float)Math.Round(_hp - _lastHp, 2));
         if (_gold - _lastGold != 0) OnAddGoldUI?.Invoke(_gold - _lastGold);
 
         RefreshLastParam();
@@ -287,7 +313,7 @@ public class GameManager : MonoBehaviour
             float restMult = 1;
 
             if (damage > 0)
-                restMult = CurrentRestProportion;
+                restMult = 1 - CurrentRestProportion;
 
             return restMult;
         }

@@ -33,9 +33,9 @@ public class Enemy : MonoBehaviour
         if (explosionEffectPrefab != null)
         {
             var e = Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
+
+            e.GetComponentInChildren<AudioSource>().Play();
             e.Play();
-            target.ChangeHp(false);
-            GameManager.self.TakeDamage(damage);
         }
     }
 
@@ -49,6 +49,8 @@ public class Enemy : MonoBehaviour
             if (player != null)
             {
                 player.DeactivateBomb();
+                target.ChangeHp(false);
+                GameManager.self.TakeDamage(damage);
                 Destroy(gameObject);
             }
         }

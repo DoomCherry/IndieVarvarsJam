@@ -32,15 +32,15 @@ namespace SimpleMan.VisualRaycast.Presentation
 
         private void DrawMissedRay()
         {
-            ComplexGizmos.DrawRay(_from, _direction, _distance, _missColor);
-            ComplexGizmos.DrawWireSphere(_from + _direction * _distance, _radius, _missColor);
+           // ComplexGizmos.DrawRay(_from, _direction, _distance, _missColor);
+            //ComplexGizmos.DrawWireSphere(_from + _direction * _distance, _radius, _missColor);
         }
 
         private void DrawHitRay()
         {
-            ComplexGizmos.DrawLine(_from, _from + _direction * _castResult.hits[0].distance, _hitColor);
-            ComplexGizmos.DrawWireSphere(_from + _direction * _castResult.hits[0].distance, _radius, _hitColor);
-            ComplexGizmos.DrawSphere(_castResult.hits.First().point, _hitPointRadius, _hitColor);
+            //ComplexGizmos.DrawLine(_from, _from + _direction * _castResult.hits[0].distance, _hitColor);
+            //ComplexGizmos.DrawWireSphere(_from + _direction * _castResult.hits[0].distance, _radius, _hitColor);
+            //ComplexGizmos.DrawSphere(_castResult.hits.First().point, _hitPointRadius, _hitColor);
         }
     }
 }
